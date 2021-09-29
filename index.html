@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Library</title>
+</head>
+<body>
+    <button id="popup" onclick="displayPopup()">Add new book</button>
+    <div id="formpopup">
+    <form id='form' method="post">
+        <label for="formtitle">Title:</label><br>
+        <input type="text" id="formtitle" name="formtitle"><br>
+        <label for="formauthor">Author:</label><br>
+        <input type="text" id="formauthor" name="formauthor"><br>
+        <label for="formpages">Pages:</label><br>
+        <input type="text" id="formpages" name="formpages"><br>
+        <input type="checkbox" id="formstatus" name="formstatus">
+        <label for="formstatus">Have you read this?</label>
+        <input type="submit" value="Add" onclick="submitForm(event)">
+    </form>
+    </div>
+    <div class="table">
+        <div class="row header">
+            <div class="title">Title</div>
+            <div class="author">Author</div>
+            <div class="pages">Pages</div>
+            <div class="status">Status</div>
+        </div>
+    </div>
+    
+</body>
+<script src="scripts.js"></script>
+</html>

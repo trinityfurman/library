@@ -1,0 +1,26 @@
+body {
+    display: flex;
+}
+
+.table {
+    margin-top: 40px;
+    margin-left: 300px;
+    border: black solid 1px;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    border: red 1px solid;
+}
+
+.row div {
+    width: 150px;
+}
+
+#formpopup {
+    display: none;
+}
