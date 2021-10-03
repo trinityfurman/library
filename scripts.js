@@ -51,7 +51,7 @@ function createTable() {
         const title = document.createElement('div');
         const author = document.createElement('div');
         const pages = document.createElement('div');
-        const status = document.createElement('div');
+        const statusButton = document.createElement('BUTTON');
         const removeButton = document.createElement('BUTTON');
         removeButton.textContent = "Remove";
         removeButton.classList.add("removeButtons");
@@ -62,16 +62,19 @@ function createTable() {
         removeButton.setAttribute('data-index', index);
         // Add event listner to button
         removeButton.addEventListener('click', removeBook);
+
+        statusButton.setAttribute('data-index', index);
+        statusButton.addEventListener('click', changeStatus);
     
         title.textContent = book.title;
         author.textContent = book.author;
         pages.textContent = book.pages;
-        status.textContent = book.readStatus;
+        statusButton.textContent = book.readStatus;
     
         row.appendChild(title);
         row.appendChild(author);
         row.appendChild(pages);
-        row.appendChild(status);
+        row.appendChild(statusButton);
         row.appendChild(removeButton);
         rest.appendChild(row);
        
@@ -123,3 +126,14 @@ function removeBook(e) {
     createTable();
 }
 
+function changeStatus(e) {
+    let bookIndex = e.target.dataset.index;
+    let chosenBook = library[bookIndex];
+
+    if (chosenBook.readStatus == "already read") {
+        chosenBook.readStatus = "haven't read yet";
+    } else {
+        chosenBook.readStatus = "already read";
+    }
+    createTable();
+ }
