@@ -1,9 +1,7 @@
-//Notes: use findIndex to determine index number of book.
-// Then add data-book number to row with the index number
-// Theeeen add delete button
-
-// remove book from library, which will remove row when new table is created
-// Program remove function when button is clicked
+//Notes: add close button to form to close it?
+// format popup
+// design everything!
+// fix form when fields aren't filled out
 
 // Create library array
 let library = [];
@@ -113,10 +111,13 @@ function submitForm(event) {
 //Function To Display Popup
 function displayPopup() {
     document.getElementById('formpopup').style.display = "block";
+    document.getElementById('modal').style.display = "block";
 }
 //Function to Hide Popup
 function hidePopup() {
     document.getElementById('formpopup').style.display = "none";
+    document.getElementById('modal').style.display = "none";
+
 }
 
 function removeBook(e) {

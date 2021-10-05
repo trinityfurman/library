@@ -9,18 +9,20 @@
 </head>
 <body>
     <button id="popup" onclick="displayPopup()">Add new book</button>
-    <div id="formpopup">
-    <form id='form' method="post">
-        <label for="formtitle">Title:</label><br>
-        <input type="text" id="formtitle" name="formtitle"><br>
-        <label for="formauthor">Author:</label><br>
-        <input type="text" id="formauthor" name="formauthor"><br>
-        <label for="formpages">Pages:</label><br>
-        <input type="text" id="formpages" name="formpages"><br>
-        <input type="checkbox" id="formstatus" name="formstatus">
-        <label for="formstatus">Have you read this?</label>
-        <input type="submit" value="Add" onclick="submitForm(event)">
-    </form>
+    <div id="modal">
+      <div id="formpopup">
+        <form id='form' method="post">
+            <label for="formtitle">Title:</label><br>
+            <input type="text" id="formtitle" name="formtitle"><br>
+            <label for="formauthor">Author:</label><br>
+            <input type="text" id="formauthor" name="formauthor"><br>
+            <label for="formpages">Pages:</label><br>
+            <input type="text" id="formpages" name="formpages"><br>
+            <input type="checkbox" id="formstatus" name="formstatus">
+            <label for="formstatus">Have you read this?</label>
+            <input type="submit" value="Add" onclick="submitForm(event)">
+        </form>
+      </div>
     </div>
     <div class="table">
         <div class="row header">
