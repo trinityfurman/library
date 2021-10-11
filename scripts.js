@@ -1,8 +1,3 @@
-//Notes: add close button to form to close it?
-// format popup
-// design everything!
-// fix form when fields aren't filled out
-
 // Create library array
 let library = [];
 let newBook = "";
@@ -18,121 +13,124 @@ function Book(title, author, pages, readStatus) {
     }
   }
 
-  const lolita = new Book('Lolita', 'Nabokov', 300, 'already read');
-  const emma = new Book('Emma', 'Jane Austen', 200, 'already read' );
-  const beloved = new Book('Beloved', 'Toni Morrison', 350, 'already read');
-
 // Add book to library array
 function addBookToLibrary(book) {
   library.push(book);
 }
 
-addBookToLibrary(lolita);
-addBookToLibrary(emma);
-addBookToLibrary(beloved);
-
-
+// Create table 
 function createTable() {
     let rest = document.getElementById("rest");
-        
+       
+    // Remove previous rows to reset
     while (rest.firstChild) {
         rest.removeChild(rest.firstChild);
     }
 
-
+    // Cycle through each book in array and create a row
     library.forEach(function(book) {
 
+        // Find array index for specific book
         let index = library.findIndex(libraryBook => libraryBook === book);
 
-        // Create new divs
+        // Create new divs and buttons for the row
         const row = document.createElement('div'); 
         const title = document.createElement('div');
         const author = document.createElement('div');
         const pages = document.createElement('div');
+        const statusDiv = document.createElement('div');
         const statusButton = document.createElement('BUTTON');
+        const removeDiv = document.createElement('div');
         const removeButton = document.createElement('BUTTON');
-        removeButton.textContent = "Remove";
-        removeButton.classList.add("removeButtons");
-    
-        row.classList.add('row');
         
-        // Set data attribute for button
+        // Add specific classes to divs and buttons 
+        removeButton.textContent = "x";
+        removeButton.classList.add("removeButtons");
+        removeDiv.classList.add("removeDivs");
+        statusDiv.classList.add("statusDivs");
+        row.classList.add('row');
+        pages.classList.add('pages');
+        
+        // Set data attribute for buttons based on the array index
         removeButton.setAttribute('data-index', index);
-        // Add event listner to button
-        removeButton.addEventListener('click', removeBook);
-
         statusButton.setAttribute('data-index', index);
+        
+        // Add event listener to buttons with appropriate function
+        removeButton.addEventListener('click', removeBook);
         statusButton.addEventListener('click', changeStatus);
     
+        // Populate divs with the info of each book
         title.textContent = book.title;
         author.textContent = book.author;
         pages.textContent = book.pages;
         statusButton.textContent = book.readStatus;
     
+        // Append divs and buttons to the table
+        removeDiv.appendChild(removeButton);
+        statusDiv.appendChild(statusButton);
         row.appendChild(title);
         row.appendChild(author);
         row.appendChild(pages);
-        row.appendChild(statusButton);
-        row.appendChild(removeButton);
+        row.appendChild(statusDiv);
+        row.appendChild(removeDiv);
         rest.appendChild(row);
        
     });
 }
 
-createTable();
-
-
-// Validating Empty Field
 function submitForm(event) {
+    // Prevent page from refreshing
     event.preventDefault();
 
+    // Prevent empty form from being submitted
     if (document.getElementById('formtitle').value == "" || document.getElementById('formauthor').value == "" || document.getElementById('formpages').value == "") {
-    alert("Please fill out every field.");
+        alert("Please fill out every field.");
     } else {
-    
         const check = document.getElementById('formstatus');
-    if (check.checked == true) {
-        checkStatus = 'already read';
-    } else {
-        checkStatus = "haven't read yet";
-    }
-    newBook = new Book(document.getElementById('formtitle').value, document.getElementById('formauthor').value, document.getElementById('formpages').value, checkStatus);
-    }
+        if (check.checked == true) {
+            checkStatus = 'already read';
+        } else {
+            checkStatus = "unread";
+        }
+        // Create new book object based on info from form
+        newBook = new Book(document.getElementById('formtitle').value, document.getElementById('formauthor').value, document.getElementById('formpages').value, checkStatus);
+    
+    // Add new book to library array and create table
     addBookToLibrary(newBook);
-    console.log(library);
-    console.log(newBook);
     hidePopup();
     createTable();
 
+    // Reset form
     const bookForm = document.getElementById("form");
     bookForm.reset();
+    }
 }
 
-//Function To Display Popup
+// Display popup
 function displayPopup() {
     document.getElementById('formpopup').style.display = "block";
     document.getElementById('modal').style.display = "block";
 }
-//Function to Hide Popup
+// Hide popup
 function hidePopup() {
     document.getElementById('formpopup').style.display = "none";
     document.getElementById('modal').style.display = "none";
-
 }
 
+// Remove book from array based on index
 function removeBook(e) {
-
     let bookIndex = e.target.dataset.index;
     library.splice(bookIndex, 1);
     createTable();
 }
 
+// Change read status of book at specific index
 function changeStatus(e) {
     let bookIndex = e.target.dataset.index;
     let chosenBook = library[bookIndex];
 
     if (chosenBook.readStatus == "already read") {
-        chosenBook.readStatus = "haven't read yet";
+        chosenBook.readStatus = "unread";
     } else {
         chosenBook.readStatus = "already read";
     }

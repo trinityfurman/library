@@ -1,10 +1,45 @@
 body {
     display: flex;
+    flex-direction: column;
+    justify-content: start;
+    font-family: 'Lora', serif;
+    background-color: #E8F1D4;
+    padding: 0px;
+    margin: 0px;
 }
+
+#main {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#mainHeader {
+    background-color: #EFD3CD;
+    padding: 20px;
+    padding-left: 40px;
+    color: #6A7B67;
+    border-bottom: 1px solid #6A7B67;
+    font-weight: bold;
+    font-family: 'DM Mono', monospace;
+    font-size: 40px;
+}
+
+button {
+    font-family: 'Lora', serif;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #C8DBCD;
+    border: 1px solid #6A7B67;   
+}
+
+button:hover {
+    background-color: #95b19d;
+}
+
 
 .table {
     margin-top: 40px;
-    margin-left: 300px;
     border: black solid 1px;
     display: flex;
     flex-direction: column;
@@ -14,19 +49,64 @@ body {
 .row {
     display: flex;
     flex-direction: row;
-    border: red 1px solid;
+    justify-content: space-between;
 }
 
 .row div {
-    width: 150px;
+    width: 120px;
+    padding: 2px;
+}
+
+#rest div {
+    text-align: center;
+    font-size: 14px;
+}
+
+.header {
+    background-color: #7E998D;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.table button {
+    margin: 5px;
+}
+
+.removeDivs, .statusDivs {
+    display: flex;
+    justify-content: center;
+}
+
+#addButtonDiv {
+    padding: 40px;
+}
+
+.pages {
+    text-align: center;
 }
 
 #formpopup {
-    /*display: none;*/
-    width: 300px;
-    background-color: lightblue;
+    width: 250px;
+    background-color: #EFD3CD;
     margin: 15% auto;
+    padding: 10px;
+    font-size: 14px;
 }
+
+#formSubmit {
+    font-family: 'Lora', serif;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #C8DBCD;
+    border: 1px solid #6A7B67;
+}
+
+#formSubmit:hover {
+    background-color: #95b19d;
+}
+
 
 #modal {
     position: fixed;
@@ -39,3 +119,21 @@ body {
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
+
+#form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#rightside {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#rest {
+    background-color: #C8DBCD;
+}
+
+
