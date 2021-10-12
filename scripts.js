@@ -99,6 +99,7 @@ function submitForm(event) {
     addBookToLibrary(newBook);
     hidePopup();
     createTable();
+    saveLibrary(library);
 
     // Reset form
     const bookForm = document.getElementById("form");
@@ -122,6 +123,7 @@ function removeBook(e) {
     let bookIndex = e.target.dataset.index;
     library.splice(bookIndex, 1);
     createTable();
+    saveLibrary(library);
 }
 
 // Change read status of book at specific index
@@ -135,4 +137,27 @@ function changeStatus(e) {
         chosenBook.readStatus = "already read";
     }
     createTable();
+    saveLibrary(library);
  }
+
+ // Save library array in local storage
+function saveLibrary(newArray) {
+    localStorage.setItem('bookArray', JSON.stringify(newArray));
+ }
+
+ // Grab array from local storage
+function grabArray() {
+     if (localStorage.getItem('bookArray') == null ) {
+        return 'undefined';
+     } else {
+         return JSON.parse(localStorage.getItem('bookArray'));
+     }
+ }
+
+// Ensure local storage is used only when it's not empty
+ if (grabArray() != 'undefined') {
+     library = grabArray();
+ }  
+
+ // Create initial table
+ createTable();
