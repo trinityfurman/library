@@ -3,14 +3,13 @@ let library = [];
 let newBook = "";
 
 // Create book object 
-function Book(title, author, pages, readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.info = function() {
-      return (`${title} by ${author}, ${pages} pages, ${readStatus}`);
-    }
+  class Book {
+      constructor(title, author, pages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+      }
   }
 
 // Add book to library array
